@@ -55,7 +55,8 @@
   },
   "dependencies": {
     "@jupyterlab/application": "^3.1.0",
-    "@jupyterlab/settingregistry": "^3.1.0"
+    "@jupyterlab/settingregistry": "^3.1.0",
+    "jupyterlab_toastify": "^4.2.1"
   },
   "devDependencies": {
     "@jupyterlab/builder": "^3.1.0",
@@ -82,7 +83,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "jupyterlab": { 
+  "jupyterlab": {
     "extension": true,
     "outputDir": "cigi_notification/labextension",
     "schemaDir": "schema"
