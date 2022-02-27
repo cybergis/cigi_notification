@@ -27,7 +27,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
     const end_date = new Date(obj.end_date);
     const today = new Date();
 
-    if (end_date >= today) {
+    if (obj.show_announcement && end_date >= today) {
       // Notification with a button
       INotification.info(obj.message, {
         buttons: show_button
