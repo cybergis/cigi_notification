@@ -15,21 +15,29 @@ const plugin: JupyterFrontEndPlugin<void> = {
   activate: async (
     app: JupyterFrontEnd,
     settingRegistry: ISettingRegistry | null
+    // setting: ISettingRegistry.ISettings
   ) => {
     const url =
-      'https://cybergisxhub.cgwebdev.cigi.illinois.edu/wp-json/cigi-announcement/v1/announcement-message/';
+      'https://js-168-248.jetstream-cloud.org/announcement/content.json'; // Developmenty';
+    // const url =
+    //   'https://cybergisxhub.cgwebdev.cigi.illinois.edu/wp-json/cigi-announcement/v1/announcement-message/'; // Development
+    // const url = 'https://cybergisxhub.cigi.illinois.edu/wp-json/cigi-announcement/v1/announcement-message/'; // Production
 
     const obj = await (await fetch(url)).json();
     console.log(obj);
     // eslint-disable-next-line eqeqeq
     const show_button = obj.show_button;
     console.log(show_button);
-    const end_date = new Date(obj.end_date);
+    const end_date = obj.end_date
+      ? new Date(obj.end_date)
+      : new Date('March 1, 2099');
+    console.log(end_date);
     const today = new Date();
-
-    if (obj.show_announcement && end_date >= today) {
+    // const endpoint = setting.get('limit').composite as string;
+    if (obj.show_announcement && today < end_date) {
       // Notification with a button
       INotification.info(obj.message, {
+        autoClose: 30000,
         buttons: show_button
           ? [
               {
@@ -37,8 +45,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
                 callback: () => window.open(obj.url, '_blank')
               }
             ]
-          : [],
-        autoClose: false
+          : []
       });
     }
 

@@ -3,6 +3,12 @@
     "title": "cigi_notification",
     "description": "cigi_notification settings.",
     "type": "object",
-    "properties": {},
+    "properties": {
+        "endpoint": {
+            "type": "string",
+            "default": "https://cybergisxhub.cgwebdev.cigi.illinois.edu/wp-json/cigi-announcement/v1/announcement-message/",
+            "description": "REST API endpoint for notification messages."
+        }
+    },
     "additionalProperties": false
 }
