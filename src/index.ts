@@ -17,8 +17,10 @@ const plugin: JupyterFrontEndPlugin<void> = {
     settingRegistry: ISettingRegistry | null
     // setting: ISettingRegistry.ISettings
   ) => {
+    // const url =
+    //   'https://js-168-248.jetstream-cloud.org/announcement/content.json'; // Development CJW';
     const url =
-      'https://js-168-248.jetstream-cloud.org/announcement/content.json'; // Developmenty';
+      'https://js-156-216.jetstream-cloud.org/announcement/content.json'; // Production CJW';
     // const url =
     //   'https://cybergisxhub.cgwebdev.cigi.illinois.edu/wp-json/cigi-announcement/v1/announcement-message/'; // Development
     // const url = 'https://cybergisxhub.cigi.illinois.edu/wp-json/cigi-announcement/v1/announcement-message/'; // Production
@@ -37,7 +39,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
     if (obj.show_announcement && today < end_date) {
       // Notification with a button
       INotification.info(obj.message, {
-        autoClose: 30000,
+        autoClose: 180000,
         buttons: show_button
           ? [
               {
